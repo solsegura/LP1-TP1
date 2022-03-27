@@ -1,32 +1,30 @@
 #pragma once
 #include <stdio.h>
-#include <string.h>
-#include "Paciente.h"
+#include "Pacientes.h"
 #include "Laboratorios.h"
-
-
+#include <string>
 /*
 */
 
 
 using namespace std;
 
-class CentroDeTesteo {
+class cCentroDeTesteo {
 	string IDcentro;     //atributos descriptivos
 	int comuna;
 	string nombre;
 	bool completo;		//atributos funcionales
 	*Paciente paciente1 = NULL;
-	*Paciente paciente2 = NULL;
+	Paciente::*Paciente paciente2 = NULL;
 	*Laboratorio laboaratorio = NULL;
 
 public:
-	CentroDeTesteo(string IDcentro, int comuna, string nombre, bool completo = false,*Paciente paciente = NULL, *Laboratorio laboratorio = NULL); //constructor, dejo los dos punteros igualados a NULL por defecto ya que todavia no lo asociamos a ningun paciente ni laboratorio
-	~CentroDeTesteo();		//destructor
-	AsociarLaboratorio(Laboratorio laboratorio);
+	cCentroDeTesteo(string _IDcentro, int _comuna, string _nombre, bool _completo = false, *Paciente _paciente1 = NULL, *Paciente _paciente2 = NULL, *Laboratorio _laboratorio = NULL); //constructor, dejo los dos punteros igualados a NULL por defecto ya que todavia no lo asociamos a ningun paciente ni laboratorio
+	~cCentroDeTesteo();		//destructor
+	AsociarLaboratorio(Laboratorio _laboratorio);
 	DesasociarLaboratorio();
-	AltaPaciente(Paciente paciente);
-	BajaPaciente(Paciente paciente);
+	AltaPaciente(Paciente _paciente);
+	BajaPaciente(Paciente _paciente);
 	MandarTesteos();
 
 };
