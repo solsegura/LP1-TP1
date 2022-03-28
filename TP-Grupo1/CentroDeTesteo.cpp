@@ -3,8 +3,17 @@
 #include <stdio.h>
 
 using namespace std;
-
-cCentroDeTesteo::cCentroDeTesteo(string _IDcentro, int _comuna, string _nombre, bool _completo = false, *Paciente _paciente1 = NULL, *Paciente _paciente2 = NULL, *Laboratorio _laboratorio = NULL) {
+/// <summary>
+/// Constructor de la clase Centro de Testeo
+/// </summary>
+/// <param name="_IDcentro"></param>
+/// <param name="_comuna"></param>
+/// <param name="_nombre"></param>
+/// <param name="_completo"></param>
+/// <param name="_paciente1"></param>
+/// <param name="_paciente2"></param>
+/// <param name="_laboratorio"></param>
+cCentroDeTesteo::cCentroDeTesteo(string _IDcentro, int _comuna, string _nombre, bool _completo = false, *cPaciente _paciente1 = NULL, *cPaciente _paciente2 = NULL, *cLaboratorio _laboratorio = NULL) {
 	
 	this->IDcentro = _IDcentro;
 	this->comuna = _comuna;
@@ -15,20 +24,41 @@ cCentroDeTesteo::cCentroDeTesteo(string _IDcentro, int _comuna, string _nombre, 
 	this->laboratorio = _laboratorio;
 }
 
-cCentroDeTesteo::AsociarLaboratorio(Laboratorio _laboratorio) {
+/// <summary>
+/// Destructor
+/// </summary>
+cCentroDeTesteo::~cCentroDeTesteo() {
+
+}
+
+
+/// <summary>
+/// Asocia el centro de testeo al laboratorio recibido por parametro
+/// </summary>
+/// <param name="_laboratorio"></param>
+cCentroDeTesteo::AsociarLaboratorio(cLaboratorio _laboratorio) {
 	this->laboratorio = laboratorio;
 
 }
+
+/// <summary>
+/// Desasocia el centro de testeo del laboratorio
+/// </summary>
 cCentroDeTesteo::DesasociarLaboratorio() {
 	this->laboratorio = NULL;
 }
-cCentroDeTesteo::AltaPaciente(Paciente _paciente) {
+
+/// <summary>
+/// Da de alta un nuevo paciente si el centro no esta completo, sino informa que esta completo
+/// </summary>
+/// <param name="_paciente"></param>
+cCentroDeTesteo::AltaPaciente(cPaciente _paciente) {
 	if (this->completo == false) {
 		if (this->paciente1 == NULL) {
-			this->paciente1 = _paciente;
+			this->paciente1 = &_paciente;
 		}
 		else
-			this->paciente2 = _paciente;
+			this->paciente2 = &_paciente;
 	}
 	else {
 		cout << "Error: no hay espacio para mas pacientes" << endl;
@@ -37,14 +67,27 @@ cCentroDeTesteo::AltaPaciente(Paciente _paciente) {
 		this->completo = true;
 	}
 }
-cCentroDeTesteo::BajaPaciente(Paciente _paciente) {
-	if (this->paciente1 == _paciente) //si el paciente que se desea dar de baja esta en el puntero 1, lo hacemos apuntar a NULL
+
+/// <summary>
+/// Da de baja un paciente cuando este ya tiene el resultado del test
+/// </summary>
+/// <param name="_paciente"></param>
+cCentroDeTesteo::BajaPaciente(cPaciente _paciente) {
+	if (this->paciente1 == _paciente) { //si el paciente que se desea dar de baja esta en el puntero 1, lo hacemos apuntar a NULL  y cambiamos el estado de completo ya que se libera un lugar
 		this->paciente1 = NULL;
-	else if (this->paciente2 == _paciente)
-		this->paciente2 = NULL; //si esta en el 2, lo hacemos apuntar a NULL
+		this->completo=false
+	}
+	else if (this->paciente2 == _paciente) {
+		this->paciente2 = NULL; //si esta en el 2, lo hacemos apuntar a NULL y cambiamos el estado de completo ya que se libera un lugar
+		this->completo = false;
+	}
 	else
 		cout << "Error, ese paciente no estaba en nuestra base de datos" << endl; //si no esta en ninguno, hay error
 }
+
+/// <summary>
+/// Envia la muestra de un paciente al laboratorio
+/// </summary>
 cCentroDeTesteo::MandarTesteos() {
 	this->*laboratorio.RecibirMuestra(paciente1);
 	this->*laboratorio.RecibirMuestra(paciente2);
