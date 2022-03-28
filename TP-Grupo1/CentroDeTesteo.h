@@ -27,5 +27,14 @@ public:
 	BajaPaciente(cPaciente _paciente);
 	MandarTesteos();
 
+
+	//setters de los atributos funcionales
+	setCompleto(bool _completo);
+	setPaciente1(*Paciente _paciente);
+	setPaciente2(*Paciente _paciente);
+
+	//funciones que usaremos para imprimir en pantalla los atributos
+	string to_stringCentro();
+	ImprimirEnPantalla();
 };
 

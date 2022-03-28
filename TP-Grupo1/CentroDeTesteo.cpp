@@ -88,6 +88,8 @@ cCentroDeTesteo::BajaPaciente(cPaciente _paciente) {
 	}
 }
 
+
+
 /// <summary>
 /// Envia la muestra de un paciente al laboratorio
 /// </summary>
@@ -97,4 +99,54 @@ cCentroDeTesteo::MandarTesteos() {
 
 }
 
+/// <summary>
+/// Asigna false o true al atributo completo
+/// </summary>
+/// <param name="_completo"></param>
+cCentroDeTesteo::setCompleto(bool _completo) {
+	this->completo = _completo;
+}
 
+/// <summary>
+/// Asigna un paciente al puntero paciente1
+/// </summary>
+/// <param name="_paciente"></param>
+cCentroDeTesteo::setPaciente1(*Paciente _paciente) {
+	this->paciente1 = _paciente;
+}
+
+/// <summary>
+/// Asigna un paciente al puntero paciente2
+/// </summary>
+/// <param name="_paciente"></param>
+cCentroDeTesteo::setPaciente2(*Paciente _paciente) {
+	this->paciente2 = _paciente;
+}
+
+
+ /// <summary>
+ /// Imprime en pantalla los atributos
+ /// </summary>
+ cCentroDeTesteo::ImprimirEnPantalla() {
+	string Imprimir = to_string();
+	cout << Imprimir;
+}
+
+/// <summary>
+/// Concatena los atributos del centro de testeos en un string
+/// </summary>
+/// <returns></returns>
+string cCentroDeTesteo::to_stringCentro() {
+	//se cargan los datos en el string 
+	stringstream ss;
+	ss << "Nombre: " << nombre << endl;
+	ss << "Comuna:  " << to_string(comuna) << endl;
+	ss << "ID: " << IDcentro << endl;
+	if (paciente1 != NULL) {
+		ss << "Paciente: " << paciente1->getNombre() << " " << paciente1->getApellido() << endl;
+	}
+	if (paciente2 != NULL) {
+		ss << "Paciente: " << paciente2->getNombre() << " " << paciente2->getApellido() << endl;
+	}
+	return  ss.str();
+}

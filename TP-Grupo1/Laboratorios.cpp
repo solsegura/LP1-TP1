@@ -45,12 +45,12 @@ cLaboratorio::RecibirMuestra(cPaciente* _paciente) {
 
 }
 
-cLaboratorio::AnalisisMuestra(cPciente* _paciente) {
+cLaboratorio::AnalisisMuestra(cPaciente* _paciente) {
 
 
 
  }
-cLaboratorio::AvisarPacientes(cPciente* _paciente) {
+cLaboratorio::AvisarPacientes(cPaciente* _paciente) {
 
 
 }

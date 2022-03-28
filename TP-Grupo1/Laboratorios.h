@@ -17,7 +17,7 @@ class cLaboratorio {
 public:
 	cLaboratorio(string _IDlabo, string _nombre, int _comuna, cPaciente* _paciente1 = NULL, cPaciente* _paciente2 = NULL, bool _completo = false);
 	~cLaboratorio();
-	RecibirMuestra(cPaciente* _paciente, bool _completo);
-	AnalisisMuestra(cPciente* _paciente);
+	RecibirMuestra(cPaciente* _paciente);
+	AnalisisMuestra(cPaciente* _paciente);
 	AvisarPacientes(cPaciente* _paciente);
 };
