@@ -4,6 +4,15 @@
 
 using namespace std;
 
+/// <summary>
+/// Constructor de la clase cLaboratorio
+/// </summary>
+/// <param name="_IDlabo"></param>
+/// <param name="_nombre"></param>
+/// <param name="_comuna"></param>
+/// <param name="_paciente1"></param>
+/// <param name="_paciente2"></param>
+/// <param name="_completo"></param>
 cLaboratorio::cLaboratorio(string _IDlabo, string _nombre, int _comuna, cPaciente* _paciente1 = NULL, cPaciente* _paciente2 = NULL, bool _completo = false) {
 
 	this->IDlabo = _IDlabo;
@@ -11,9 +20,15 @@ cLaboratorio::cLaboratorio(string _IDlabo, string _nombre, int _comuna, cPacient
 	this->comuna = _comuna;
 	this->paciente1 = _paciente1;
 	this->paciente2 = _paciente2;
+	this->completo = _completo;
 }
 
-cLaboratorio::RecibirMuestra(cPaciente* _paciente, bool _completo) {
+
+/// <summary>
+/// Recibe un paciente y si hay lugar en el laboratorio recibe la muestra (apunta uno de los punteros al paciente)
+/// </summary>
+/// <param name="_paciente"></param>
+cLaboratorio::RecibirMuestra(cPaciente* _paciente) {
 	if (this->completo == false)
 	{
 		if (this->paciente1 == NULL)
@@ -29,6 +44,7 @@ cLaboratorio::RecibirMuestra(cPaciente* _paciente, bool _completo) {
 	}
 
 }
+
 cLaboratorio::AnalisisMuestra(cPciente* _paciente) {
 
 

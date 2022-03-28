@@ -1,4 +1,5 @@
 #include "CentroDeTesteo.h"
+#include "Laboratorios.h"
 #include <string>
 #include <stdio.h>
 
@@ -13,7 +14,7 @@ using namespace std;
 /// <param name="_paciente1"></param>
 /// <param name="_paciente2"></param>
 /// <param name="_laboratorio"></param>
-cCentroDeTesteo::cCentroDeTesteo(string _IDcentro, int _comuna, string _nombre, bool _completo = false, *cPaciente _paciente1 = NULL, *cPaciente _paciente2 = NULL, *cLaboratorio _laboratorio = NULL) {
+cCentroDeTesteo::cCentroDeTesteo(string _IDcentro, int _comuna, string _nombre, bool _completo = false, cPaciente* _paciente1 = NULL, cPaciente* _paciente2 = NULL, cLaboratorio* _laboratorio = NULL) {
 	
 	this->IDcentro = _IDcentro;
 	this->comuna = _comuna;
@@ -37,7 +38,7 @@ cCentroDeTesteo::~cCentroDeTesteo() {
 /// </summary>
 /// <param name="_laboratorio"></param>
 cCentroDeTesteo::AsociarLaboratorio(cLaboratorio _laboratorio) {
-	this->laboratorio = laboratorio;
+	this->laboaratorio = &_laboratorio;
 
 }
 
@@ -73,23 +74,27 @@ cCentroDeTesteo::AltaPaciente(cPaciente _paciente) {
 /// </summary>
 /// <param name="_paciente"></param>
 cCentroDeTesteo::BajaPaciente(cPaciente _paciente) {
-	if (this->paciente1 == _paciente) { //si el paciente que se desea dar de baja esta en el puntero 1, lo hacemos apuntar a NULL  y cambiamos el estado de completo ya que se libera un lugar
-		this->paciente1 = NULL;
-		this->completo=false
+	if (_paciente.ResultadoTesteo != "Sin resultado") {
+		if (this->paciente1 == _paciente) { //si el paciente que se desea dar de baja esta en el puntero 1, lo hacemos apuntar a NULL  y cambiamos el estado de completo ya que se libera un lugar
+			this->paciente1 = NULL;
+			this->completo = false
+		}
+		else if (this->paciente2 == _paciente) {
+			this->paciente2 = NULL; //si esta en el 2, lo hacemos apuntar a NULL y cambiamos el estado de completo ya que se libera un lugar
+			this->completo = false;
+		}
+		else
+			cout << "Error, ese paciente no estaba en nuestra base de datos" << endl; //si no esta en ninguno, hay error
 	}
-	else if (this->paciente2 == _paciente) {
-		this->paciente2 = NULL; //si esta en el 2, lo hacemos apuntar a NULL y cambiamos el estado de completo ya que se libera un lugar
-		this->completo = false;
-	}
-	else
-		cout << "Error, ese paciente no estaba en nuestra base de datos" << endl; //si no esta en ninguno, hay error
 }
 
 /// <summary>
 /// Envia la muestra de un paciente al laboratorio
 /// </summary>
 cCentroDeTesteo::MandarTesteos() {
-	this->*laboratorio.RecibirMuestra(paciente1);
-	this->*laboratorio.RecibirMuestra(paciente2);
+	this->laboratorio->RecibirMuestra(paciente1);
+	this->laboratorio->RecibirMuestra(paciente2);
 
 }
+
+
