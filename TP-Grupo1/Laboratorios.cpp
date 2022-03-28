@@ -33,7 +33,7 @@ cLaboratorio::RecibirMuestra(cPaciente* _paciente) {
 	{
 		if (this->paciente1 == NULL)
 		{
-			this->paciente1 = _paciente;
+			this->paciente1 = _paciente;   //despues hacete un setter de esto (yo recien lo cambie en el mio)
 		}
 		else
 			this->paciente2 = _paciente;

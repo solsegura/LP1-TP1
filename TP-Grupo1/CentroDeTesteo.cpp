@@ -56,16 +56,16 @@ cCentroDeTesteo::DesasociarLaboratorio() {
 cCentroDeTesteo::AltaPaciente(cPaciente _paciente) {
 	if (this->completo == false) {
 		if (this->paciente1 == NULL) {
-			this->paciente1 = &_paciente;
+			setPaciente1(_paciente);
 		}
 		else
-			this->paciente2 = &_paciente;
+			setPaciente2(_paciente);
 	}
 	else {
 		cout << "Error: no hay espacio para mas pacientes" << endl;
 	}
 	if (this->paciente1 != NULL && this->paciente2 != NULL) {
-		this->completo = true;
+		setCompleto(true);
 	}
 }
 
