@@ -23,7 +23,9 @@ cLaboratorio::cLaboratorio(string _IDlabo, string _nombre, int _comuna, cPacient
 	this->completo = _completo;
 }
 
+cLaboratorio::~cLaboratorio() {
 
+}
 /// <summary>
 /// Recibe un paciente y si hay lugar en el laboratorio recibe la muestra (apunta uno de los punteros al paciente)
 /// </summary>
@@ -85,4 +87,14 @@ cLaboratorio::AvisarPacientes(cPaciente* _paciente) { //asumo que el numeor de t
 	_paciente == NULL; //libero la muestra
 
 
+}
+
+cLaboratorio::setCompleto(bool _completo) {
+	this->completo = _completo;
+}
+cLaboratorio::setPaciente1(*Paciente _paciente) {
+	this->paciente1 = _paciente;
+}
+cLaboratorio::setPaciente2(*Paciente _paciente) {
+	this->paciente2 = _paciente;
 }
