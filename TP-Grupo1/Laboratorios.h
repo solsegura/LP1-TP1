@@ -20,4 +20,9 @@ public:
 	RecibirMuestra(cPaciente* _paciente);
 	AnalisisMuestra(cPaciente* _paciente);
 	AvisarPacientes(cPaciente* _paciente);
+
+	//setters de los atributos funcionales
+	setCompleto(bool _completo);
+	setPaciente1(*Paciente _paciente);
+	setPaciente2(*Paciente _paciente);
 };

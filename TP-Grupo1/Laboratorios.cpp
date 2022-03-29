@@ -33,24 +33,56 @@ cLaboratorio::RecibirMuestra(cPaciente* _paciente) {
 	{
 		if (this->paciente1 == NULL)
 		{
-			this->paciente1 = _paciente;   //despues hacete un setter de esto (yo recien lo cambie en el mio)
+			setPaciente1(_paciente);
 		}
 		else
-			this->paciente2 = _paciente;
+			setPaciente2(_paciente);
 	}
 	else 
 	{
 		cout << "Error: no hay espacio para analizar mas muestras." << endl;
 	}
+	if (this->paciente1 != NULL && this->paciente2 != NULL) 
+	{
+		setCompleto(true);
+	}
 
 }
-
+/// <summary>
+/// recieb paciente y cuanta cuantos sintomas tiene
+/// </summary>
+/// <param name="_paciente"></param>
 cLaboratorio::AnalisisMuestra(cPaciente* _paciente) {
-
-
-
+	int sintomas = 0;
+	if (getFiebre(_paciente) == true)
+		sintomas++;
+	if (getTos(_paciente) == true)
+		sintomas++;
+	if (getMocos(_paciente) == true)
+		sintomas++;
+	if (getContactoEstrecho(_paciente) == true)
+		sintomas++;
+	if (getCabeza(_paciente) == true)
+		sintomas++;
+	if (getGarganta(_paciente) == true)
+		sintomas++;
+	//enum resultado covid 0 negativo 1 positivo 2 sin resultado
+	if (sintomas > 2)
+		setResultadoCovid(1);
+	if (sintomas = 2)
+		setResultadoCovid(2);
+	if (sintomas < 2)
+		setResultadoCovid(0);
  }
-cLaboratorio::AvisarPacientes(cPaciente* _paciente) {
+/// <summary>
+/// recibe un paciente y avisa su resultado del test
+/// </summary>
+/// <param name="_paciente"></param>
+cLaboratorio::AvisarPacientes(cPaciente* _paciente) { //asumo que el numeor de telefono es valido
+
+	getTelefono(_paciente);
+	cout << "El mensaje fue enviado correctamente a " << getTelefono(_paciente) << endl;
+	_paciente == NULL; //libero la muestra
 
 
 }
