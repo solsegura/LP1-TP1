@@ -1,5 +1,4 @@
 #include "CentroDeTesteo.h"
-#include "Laboratorios.h"
 #include <string>
 #include <stdio.h>
 
@@ -21,7 +20,7 @@ cCentroDeTesteo::cCentroDeTesteo(string _IDcentro, int _comuna, string _nombre, 
 	this->nombre = _nombre;
 	this->completo = _completo;
 	this->paciente1 = _paciente1;
-	this->Paciente = _paciente2;
+	this->paciente2 = _paciente2;
 	this->laboratorio = _laboratorio;
 }
 
@@ -153,6 +152,9 @@ string cCentroDeTesteo::to_stringCentro() {
 	}
 	if (paciente2 != NULL) {
 		ss << "Paciente: " << paciente2->getNombre() << " " << paciente2->getApellido() << endl;
+	}
+	if (laboratorio != NULL) {
+		ss << "Laboratorio: " << laboratorio->getnombre() << endl;
 	}
 	return  ss.str();
 }

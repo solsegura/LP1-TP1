@@ -15,10 +15,12 @@ using namespace std;
 /// <param name="head_pain"></param>
 /// <param name="throat_pain"></param>
 /// <param name=""></param>
-cPaciente::cPaciente(string name, string surname, bool fever, bool snot, bool contact, bool head_pain, bool throat_pain,resultado_testeo result = sinresultado) {
+cPaciente::cPaciente(string name, string surname, string phone,string DNI,bool fever, bool snot, bool contact, bool head_pain, bool throat_pain,resultado_testeo result = sinresultado) {
 
     this->nombre = name;
     this->apellido = surname;
+    this->dni = DNI;
+    this->telefono = phone;
     this->fiebre = fever;
     this->mocos = snot;
     this->cctoestrecho = contact;

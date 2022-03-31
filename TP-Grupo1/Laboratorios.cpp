@@ -1,6 +1,6 @@
+#include "Laboratorios.h"
 #include <stdio.h>
 #include <string>
-#include "Laboratorios.h"
 
 using namespace std;
 
@@ -26,6 +26,7 @@ cLaboratorio::cLaboratorio(string _IDlabo, string _nombre, int _comuna, cPacient
 cLaboratorio::~cLaboratorio() {
 
 }
+
 /// <summary>
 /// Recibe un paciente y si hay lugar en el laboratorio recibe la muestra (apunta uno de los punteros al paciente)
 /// </summary>
@@ -50,41 +51,52 @@ cLaboratorio::RecibirMuestra(cPaciente* _paciente) {
 	}
 
 }
+
 /// <summary>
-/// recieb paciente y cuanta cuantos sintomas tiene
+/// recibe paciente y cuanta cuantos sintomas tiene para darle un resultado del test
 /// </summary>
 /// <param name="_paciente"></param>
-cLaboratorio::AnalisisMuestra(cPaciente* _paciente) {
+cLaboratorio::AnalisisMuestra(cPaciente _paciente)
+{
+
 	int sintomas = 0;
-	if (getFiebre(_paciente) == true)
+	if (_paciente->getfiebre() == true)
 		sintomas++;
-	if (getTos(_paciente) == true)
+	if (_paciente->gettos() == true)
 		sintomas++;
-	if (getMocos(_paciente) == true)
+	if (_paciente->getmocos == true)
 		sintomas++;
-	if (getContactoEstrecho(_paciente) == true)
+	if (_paciente->getcctoestrecho == true)
 		sintomas++;
-	if (getCabeza(_paciente) == true)
+	if (_paciente->getdolor_de_cabeza == true)
 		sintomas++;
-	if (getGarganta(_paciente) == true)
+	if (_paciente->getdolor_de_garganta == true)
 		sintomas++;
 	//enum resultado covid 0 negativo 1 positivo 2 sin resultado
 	if (sintomas > 2)
-		setResultadoCovid(1);
+		_paciente->setresultado_testeo(1);
 	if (sintomas = 2)
-		setResultadoCovid(2);
+		_paciente->setresultado_testeo(2);
 	if (sintomas < 2)
-		setResultadoCovid(0);
- }
+		_paciente->setresultado_testeo(0);
+}
+
+
+
+
 /// <summary>
 /// Recibe un paciente y avisa a su telefono el resultado del test
 /// </summary>
 /// <param name="_paciente"></param>
-cLaboratorio::AvisarPacientes(cPaciente* _paciente) { //asumo que el numeor de telefono es valido
+cLaboratorio::AvisarPacientes(cPaciente* _paciente) { //asumo que el numero de telefono es valido o un espacio en caso de no tener telefono
 	string tel=_paciente->gettelefono();
-	cout << "El mensaje fue enviado correctamente a " << tel << endl;
-	_paciente == NULL; //libero la muestra
-
+	if (tel == " ") {
+		cout << "No se encontro numero de telefono" << endl;
+	}
+	else
+		cout << "El mensaje fue enviado correctamente a " << tel << endl;
+	paciente1 = NULL; //libero la muestra
+	paciente2 = NULL;
 
 }
 
@@ -98,4 +110,30 @@ cLaboratorio::setPaciente1(cPaciente* _paciente) {
 }
 cLaboratorio::setPaciente2(cPaciente* _paciente) {
 	this->paciente2 = _paciente;
+}
+
+
+
+string cLaboratorio::to_stringCentro()
+{
+	stringstream ss;
+	ss << "ID: " << this->IDlabo << endl;
+	ss << "Comuna:  " << to_string(this->comuna) << endl;
+	ss << "nombre: " << this->nombre << endl;
+	if (paciente1 != NULL) {
+		ss << "Paciente: " << paciente1->getnombre() << " " << paciente1->getapellido() << endl;
+	}
+	if (paciente2 != NULL) {
+		ss << "Paciente: " << paciente2->getnombre() << " " << paciente2->getapellido() << endl;
+	}
+	return  ss.str();
+}
+
+cLaboratorio::ImprimirEnPantalla() {
+	string info=to_stringCentro();
+	cout << info << endl;
+}
+
+string cLaboratorio::getNombreLabo() {
+	return this->nombre;
 }

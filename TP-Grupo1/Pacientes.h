@@ -2,6 +2,9 @@
 #include<iostream>
 #include <string>
 #include <stdio.h>
+#include "CentroDeTesteo.h"
+#include "Laboratorios.h"
+
 
 using namespace std;
 
@@ -24,7 +27,7 @@ private:
 
 
 public:
-    cPaciente(string name, string surname, bool fever, bool snot, bool contact, bool head_pain, bool throat_pain, resultado_testeo result=sinresultado);
+    cPaciente(string name, string surname,string phone,string DNI, bool fever, bool snot, bool contact, bool head_pain, bool throat_pain, resultado_testeo result=sinresultado);
 
     ~cPaciente();
 

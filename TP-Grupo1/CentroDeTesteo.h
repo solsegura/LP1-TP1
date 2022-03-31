@@ -1,8 +1,5 @@
 #pragma once
-#include <stdio.h>
 #include "Pacientes.h"
-#include "Laboratorios.h"
-#include <string>
 
 
 using namespace std;

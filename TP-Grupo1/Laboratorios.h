@@ -1,17 +1,16 @@
 #pragma once
-#include <stdio.h>
-#include <string>
 #include "Pacientes.h"
-#include "CentroDeTesteo.h"
+
 
 using namespace std;
 
 class cLaboratorio {
+private:
 	string IDlabo;
 	string nombre;
 	int comuna;
-	cPaciente* paciente1 = NULL;
-	cPaciente* paciente2 = NULL;
+	cPaciente* paciente1;
+	cPaciente* paciente2;
 	bool completo;
 
 public:
@@ -25,4 +24,9 @@ public:
 	setCompleto(bool _completo);
 	setPaciente1(cPaciente* _paciente);
 	setPaciente2(cPaciente* _paciente);
+	string getNombreLabo();
+
+	//funciones que usaremos para imprimir en pantalla los atributos
+	string to_stringLabo();
+	ImprimirEnPantalla();
 };
