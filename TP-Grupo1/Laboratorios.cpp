@@ -77,24 +77,25 @@ cLaboratorio::AnalisisMuestra(cPaciente* _paciente) {
 		setResultadoCovid(0);
  }
 /// <summary>
-/// recibe un paciente y avisa su resultado del test
+/// Recibe un paciente y avisa a su telefono el resultado del test
 /// </summary>
 /// <param name="_paciente"></param>
 cLaboratorio::AvisarPacientes(cPaciente* _paciente) { //asumo que el numeor de telefono es valido
-
-	getTelefono(_paciente);
-	cout << "El mensaje fue enviado correctamente a " << getTelefono(_paciente) << endl;
+	string tel=_paciente->gettelefono();
+	cout << "El mensaje fue enviado correctamente a " << tel << endl;
 	_paciente == NULL; //libero la muestra
 
 
 }
 
+
 cLaboratorio::setCompleto(bool _completo) {
 	this->completo = _completo;
 }
-cLaboratorio::setPaciente1(*Paciente _paciente) {
+
+cLaboratorio::setPaciente1(cPaciente* _paciente) {
 	this->paciente1 = _paciente;
 }
-cLaboratorio::setPaciente2(*Paciente _paciente) {
+cLaboratorio::setPaciente2(cPaciente* _paciente) {
 	this->paciente2 = _paciente;
 }
