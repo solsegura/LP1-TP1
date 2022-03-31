@@ -15,7 +15,7 @@ using namespace std;
 /// <param name="head_pain"></param>
 /// <param name="throat_pain"></param>
 /// <param name=""></param>
-cPaciente::cPaciente(string name, string surname, bool fever, bool snot, bool contact, bool head_pain, bool throat_pain, enum result == sinresultado) {
+cPaciente::cPaciente(string name, string surname, bool fever, bool snot, bool contact, bool head_pain, bool throat_pain,resultado_testeo result = sinresultado) {
 
     this->nombre = name;
     this->apellido = surname;

@@ -24,7 +24,7 @@ private:
 
 
 public:
-    cPaciente(string name, string surname, bool fever, bool snot, bool contact, bool head_pain, bool throat_pain, enum result == 0);
+    cPaciente(string name, string surname, bool fever, bool snot, bool contact, bool head_pain, bool throat_pain, resultado_testeo result=sinresultado);
 
     ~cPaciente();
 

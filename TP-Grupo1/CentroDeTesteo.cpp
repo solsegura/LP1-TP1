@@ -37,8 +37,8 @@ cCentroDeTesteo::~cCentroDeTesteo() {
 /// Asocia el centro de testeo al laboratorio recibido por parametro
 /// </summary>
 /// <param name="_laboratorio"></param>
-cCentroDeTesteo::AsociarLaboratorio(cLaboratorio _laboratorio) {
-	this->laboaratorio = &_laboratorio;
+cCentroDeTesteo::AsociarLaboratorio(cLaboratorio* _laboratorio) {
+	this->setLaboratorio(_laboratorio);
 
 }
 
@@ -107,11 +107,17 @@ cCentroDeTesteo::setCompleto(bool _completo) {
 	this->completo = _completo;
 }
 
+
+cCentroDeTesteo::setLaboratorio(cLaboratorio* _laboratorio) {
+	this->laboratorio = _laboratorio;
+}
+
+
 /// <summary>
 /// Asigna un paciente al puntero paciente1
 /// </summary>
 /// <param name="_paciente"></param>
-cCentroDeTesteo::setPaciente1(*Paciente _paciente) {
+cCentroDeTesteo::setPaciente1(cPaciente* _paciente) {
 	this->paciente1 = _paciente;
 }
 
@@ -119,7 +125,7 @@ cCentroDeTesteo::setPaciente1(*Paciente _paciente) {
 /// Asigna un paciente al puntero paciente2
 /// </summary>
 /// <param name="_paciente"></param>
-cCentroDeTesteo::setPaciente2(*Paciente _paciente) {
+cCentroDeTesteo::setPaciente2(cPaciente* _paciente) {
 	this->paciente2 = _paciente;
 }
 

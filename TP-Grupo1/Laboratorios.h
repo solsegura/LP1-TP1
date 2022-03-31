@@ -23,6 +23,6 @@ public:
 
 	//setters de los atributos funcionales
 	setCompleto(bool _completo);
-	setPaciente1(*Paciente _paciente);
-	setPaciente2(*Paciente _paciente);
+	setPaciente1(cPaciente* _paciente);
+	setPaciente2(cPaciente* _paciente);
 };
