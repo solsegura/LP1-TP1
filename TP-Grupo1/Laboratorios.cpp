@@ -21,6 +21,10 @@ cLaboratorio::cLaboratorio(string _IDlabo, string _nombre, int _comuna) {
 	this->paciente2 = NULL;
 }
 
+
+/// <summary>
+/// Destructor de la clase cLaboratorio
+/// </summary>
 cLaboratorio::~cLaboratorio() {
 
 }
@@ -30,25 +34,37 @@ cLaboratorio::~cLaboratorio() {
 /// </summary>
 /// <param name="_paciente"></param>
 void cLaboratorio::RecibirMuestra(cPaciente* _paciente) {
-	if (this->completo == false)
-	{
-		if (this->paciente1 == NULL)
-		{
-			setPaciente1(_paciente);
+	if (_paciente != NULL) {
+		if (this->completo == false) {      //si el laboratorio no esta lleno, guardo el objeto paciente en el puntero que este vacio
+			if (this->paciente1 == NULL) {
+				this->paciente1 = _paciente;
+				cout << "Se ingreso con exito la muestra de: " << _paciente->getnombre() << " al laboratorio: " << this->nombre << endl << endl;
+				system("pause");
+
+			}
+			else if (paciente1 != _paciente ) {
+				this->paciente2 = _paciente;
+				cout << "Se ingreso con exito la muestra de: " << _paciente->getnombre() << " al laboratorio: " << this->nombre << endl << endl;
+				system("pause");
+			}
+			else {
+				cout << "La muestra de  " << _paciente->getnombre() << " ya esta ingresada en este laboratorio " << endl << endl;
+				system("pause");
+
+			}
 		}
-		else
-			setPaciente2(_paciente);
+		else {
+			cout << "Error: no hay espacio para mas muestras" << endl << endl;
+			system("pause");
+
+		}
 	}
-	else 
-	{
-		cout << "Error: no hay espacio para analizar mas muestras." << endl;
-	}
-	if (this->paciente1 != NULL && this->paciente2 != NULL) 
-	{
-		setCompleto(true);
+	if (this->paciente1 != NULL && this->paciente2 != NULL) {
+		this->completo = true;   //si los dos punteros son distintos de NULL significa que el laboratorio esta lleno
 	}
 
 }
+
 
 /// <summary>
 /// recibe paciente y cuanta cuantos sintomas tiene para darle un resultado del test
@@ -102,9 +118,6 @@ void cLaboratorio::AnalisisMuestra()    //esta hacerla con paciente1 y paciente2
 
 }
 
-
-
-
 /// <summary>
 /// Recibe un paciente y avisa a su telefono el resultado del test
 /// </summary>
@@ -121,7 +134,8 @@ void cLaboratorio::AvisarPacientes() { //asumo que el numero de telefono es vali
 		else
 			cout << "El mensaje fue enviado correctamente a " <<nom <<" "<< ape<<", al telefono: "<< tel << endl << endl;  
 		paciente1 = NULL; //libero la muestra
-		
+		this->completo = false;   //ahora el laboratorio no esta lleno
+
 	}
 	if (paciente2 != NULL) {
 
@@ -134,24 +148,15 @@ void cLaboratorio::AvisarPacientes() { //asumo que el numero de telefono es vali
 		else
 			cout << "El mensaje fue enviado correctamente a " << nom << " " << ape << ", al telefono: " << tel << endl << endl;
 		paciente2 = NULL; //libero la muestra
+		this->completo = false;  //ahora el laboratorio no esta lleno
 
 	}
 }
 
-
-void cLaboratorio::setCompleto(bool _completo) {
-	this->completo = _completo;
-}
-
-void cLaboratorio::setPaciente1(cPaciente* _paciente) {
-	this->paciente1 = _paciente;
-}
-void cLaboratorio::setPaciente2(cPaciente* _paciente) {
-	this->paciente2 = _paciente;
-}
-
-
-
+/// <summary>
+/// Concatena en un string los atributos del laboratorio
+/// </summary>
+/// <returns></returns>
 string cLaboratorio::to_stringLabo()
 {
 	stringstream ss;
@@ -167,52 +172,18 @@ string cLaboratorio::to_stringLabo()
 	return  ss.str();
 }
 
+/// <summary>
+/// Imprime en pantalla los atributos del cLaboratorio
+/// </summary>
 void cLaboratorio::ImprimirEnPantalla() {
 	string info=to_stringLabo();
 	cout << info << endl;
 }
 
+/// <summary>
+/// Devuelve el nombre del laboratorio
+/// </summary>
+/// <returns></returns>
 string cLaboratorio::getNombreLabo() {
 	return this->nombre;
 }
-/*
-void cLaboratorio::AvisarPacientes(cPaciente* _paciente) { //asumo que el numero de telefono es valido o un espacio en caso de no tener telefono
-
-
-	string tel=_paciente->gettelefono();
-	if (tel == " ") {
-		cout << "No se encontro numero de telefono" << endl;
-	}
-	else
-		cout << "El mensaje fue enviado correctamente a " << tel << endl;  //HACERLO CON PUNTEROS
-	paciente1 = NULL; //libero la muestra
-	paciente2 = NULL;
-
-}
-
-
-void cLaboratorio::AnalisisMuestra(cPaciente* _paciente)    //esta hacerla con paciente1 y paciente2 PUNTEROS
-{
-
-	int sintomas = 0;
-	if (_paciente->getfiebre() == true)
-		sintomas++;
-	if (_paciente->gettos() == true)
-		sintomas++;
-	if (_paciente->getmocos() == true)
-		sintomas++;
-	if (_paciente->getcctoestrecho() == true)
-		sintomas++;
-	if (_paciente->getdolor_de_cabeza() == true)
-		sintomas++;
-	if (_paciente->getdolor_de_garganta() == true)
-		sintomas++;
-	//enum resultado covid 0 negativo 1 positivo 2 sin resultado
-	if (sintomas >= 2)
-		_paciente->setresultado_testeo(positivo);
-
-	if (sintomas < 2)
-		_paciente->setresultado_testeo(negativo);
-}
-
-*/

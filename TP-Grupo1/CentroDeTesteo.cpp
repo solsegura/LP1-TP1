@@ -29,13 +29,12 @@ cCentroDeTesteo::~cCentroDeTesteo() {
 
 }
 
-
 /// <summary>
 /// Asocia el centro de testeo al laboratorio recibido por parametro
 /// </summary>
 /// <param name="_laboratorio"></param>
 void cCentroDeTesteo::AsociarLaboratorio(cLaboratorio* _laboratorio) {
-	this->setLaboratorio(_laboratorio);
+	this->laboratorio=_laboratorio;
 
 }
 
@@ -51,31 +50,33 @@ void cCentroDeTesteo::DesasociarLaboratorio() {
 /// </summary>
 /// <param name="_paciente"></param>
 void cCentroDeTesteo::AltaPaciente(cPaciente* _paciente) {
-	if (this->completo == false) {
-		if (this->paciente1 == NULL) {
-			setPaciente1(_paciente);
-			cout << "Se ingreso con exito al paciente: " << _paciente->getnombre() << endl;
-			system("pause");
+	if (_paciente != NULL) {
+		if (this->completo == false) {
+			if (this->paciente1 == NULL) {
+				this->paciente1 = _paciente;
+				cout << "Se ingreso con exito al paciente: " << _paciente->getnombre() << endl;
+				system("pause");
 
-		}
-		else if (paciente1 != _paciente){
-			setPaciente2(_paciente);
-			cout << "Se ingreso con exito al paciente: " << _paciente->getnombre() << endl;
-			system("pause");
+			}
+			else if (paciente1 != _paciente) {
+				this->paciente2 = _paciente;
+				cout << "Se ingreso con exito al paciente: " << _paciente->getnombre() << endl;
+				system("pause");
+			}
+			else {
+				cout << "El paciente " << _paciente->getnombre() << " ya esta ingresado en el centro de testeos " << this->nombre << endl << endl;
+				system("pause");
+
+			}
 		}
 		else {
-			cout << "El paciente " << _paciente->getnombre() << " ya esta ingresado en el centro de testeos " << this->nombre << endl << endl;
+			cout << "Error: no hay espacio para mas pacientes" << endl << endl;
 			system("pause");
 
 		}
 	}
-	else {
-		cout << "Error: no hay espacio para mas pacientes" << endl << endl;
-		system("pause");
-
-	}
 	if (this->paciente1 != NULL && this->paciente2 != NULL) {
-		setCompleto(true);
+		this->completo = true;
 	}
 }
 
@@ -98,8 +99,6 @@ void cCentroDeTesteo::BajaPaciente(cPaciente* _paciente) {
 	}
 }
 
-
-
 /// <summary>
 /// Envia la muestra de un paciente al laboratorio
 /// </summary>
@@ -108,37 +107,6 @@ void cCentroDeTesteo::MandarTesteos() {
 	this->laboratorio->RecibirMuestra(paciente2);
 
 }
-
-/// <summary>
-/// Asigna false o true al atributo completo
-/// </summary>
-/// <param name="_completo"></param>
-void cCentroDeTesteo::setCompleto(bool _completo) {
-	this->completo = _completo;
-}
-
-
-void cCentroDeTesteo::setLaboratorio(cLaboratorio* _laboratorio) {
-	this->laboratorio = _laboratorio;
-}
-
-
-/// <summary>
-/// Asigna un paciente al puntero paciente1
-/// </summary>
-/// <param name="_paciente"></param>
-void cCentroDeTesteo::setPaciente1(cPaciente* _paciente) {
-	this->paciente1 = _paciente;
-}
-
-/// <summary>
-/// Asigna un paciente al puntero paciente2
-/// </summary>
-/// <param name="_paciente"></param>
-void cCentroDeTesteo::setPaciente2(cPaciente* _paciente) {
-	this->paciente2 = _paciente;
-}
-
 
  /// <summary>
  /// Imprime en pantalla los atributos

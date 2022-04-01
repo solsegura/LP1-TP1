@@ -34,16 +34,16 @@ public:
     ~cPaciente();
 
 
-    string gettelefono();
-    string getnombre();
-    string getapellido();
-    bool getfiebre();
+    string gettelefono();   //getter de telefono del paciente, lo usamos en Laboratorios.cpp en el metodo AvisarPaciente
+    string getnombre();     //getter del nombre del paciente, lo usamos en Laboratorios.cpp y Centro de Testeos.cpp
+    string getapellido();   //idem 
+    bool getfiebre();    //todos los getters de sintomas los usamos en AnalizarMuestra en Laboratorios.cpp
     bool gettos();
     bool getmocos();
     bool getcctoestrecho();
     bool getdolor_de_cabeza();
     bool getdolor_de_garganta();
-    resultado_testeo getResultadoTesteo();
+    resultado_testeo getResultadoTesteo();  
     void setresultado_testeo(resultado_testeo res);
 
     //funciones que usaremos para imprimir en pantalla los atributos

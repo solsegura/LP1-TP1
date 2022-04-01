@@ -28,11 +28,6 @@ public:
 	void MandarTesteos();
 
 
-	//setters de los atributos funcionales
-	void setCompleto(bool _completo);
-	void setLaboratorio(cLaboratorio* _laboratorio);
-	void setPaciente1(cPaciente* _paciente);
-	void setPaciente2(cPaciente* _paciente);
 
 	//funciones que usaremos para imprimir en pantalla los atributos
 	string to_stringCentro();

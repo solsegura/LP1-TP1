@@ -18,19 +18,16 @@ private:
 	bool completo;
 
 public:
-	cLaboratorio(string _IDlabo, string _nombre, int _comuna);
+	cLaboratorio(string _IDlabo, string _nombre, int _comuna);  
 	~cLaboratorio();
 	void RecibirMuestra(cPaciente* _paciente);
 	void AnalisisMuestra();
 	void AvisarPacientes();
 
-	//setters de los atributos funcionales
-	void setCompleto(bool _completo);
-	void setPaciente1(cPaciente* _paciente);
-	void setPaciente2(cPaciente* _paciente);
-	string getNombreLabo();
+	
+	string getNombreLabo();  //getter del atributo nombre que usamos en CentroDeTesteos.cpp en el metodo to_strigCentro
 
-	//funciones que usaremos para imprimir en pantalla los atributos
-	string to_stringLabo();
+	
+	string to_stringLabo();  //funciones que usaremos para imprimir en pantalla los atributos
 	void ImprimirEnPantalla();
 };

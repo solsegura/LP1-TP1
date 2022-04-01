@@ -41,8 +41,8 @@ void main() {
 	lista_centros[1]->AltaPaciente(lista_pacientes[2]);
 	lista_centros[1]->AsociarLaboratorio(lista_laboratorios[2]);  // lo asociamos al labo3
 
-	lista_centros[2]->AltaPaciente(lista_pacientes[4]);  //en el centro3 va Martina
-	lista_centros[2]->AsociarLaboratorio(lista_laboratorios[1]);  // lo asociamos al labo2
+	lista_centros[2]->AltaPaciente(lista_pacientes[1]);  //en el centro3 va Martina
+	lista_centros[2]->AsociarLaboratorio(lista_laboratorios[2]);  // lo asociamos al labo2
 
 
 	//envio las muestras de cada centro al su laboratorio asociado
