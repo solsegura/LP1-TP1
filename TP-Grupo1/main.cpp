@@ -1,4 +1,6 @@
 #include "Pacientes.h"
+#include "Laboratorios.h"
+#include "CentroDeTesteo.h"
 #define N_pacientes 5
 #define N_centros 3
 #define N_laboratorios 3
@@ -21,7 +23,7 @@ void main() {
 	lista_pacientes[4] = new cPaciente("Martina", "Martens", "123336", "48623635", false, false, false, false, false);
 
 
-	lista_laboratorios[0] = new cLaboratorio("1234", "Labo1", 12, , , );
+	lista_laboratorios[0] = new cLaboratorio("1234", "Labo1", 12);
 	lista_laboratorios[1] = new cLaboratorio("3214", "Labo2", 14);
 	lista_laboratorios[2] = new cLaboratorio("4321", "Labo3", 6);
 
@@ -66,6 +68,9 @@ void main() {
 	lista_laboratorios[1]->ImprimirEnPantalla();
 	lista_laboratorios[2]->ImprimirEnPantalla();
 
+	//lista_laboratorios[0]->AvisarPacientes();
+	//lista_laboratorios[1]->AvisarPacientes();
+	//lista_laboratorios[2]->AvisarPacientes();
 
 
 }

@@ -1,6 +1,10 @@
 #pragma once
+#include<iostream>
+#include <stdlib.h>
+#include <string>
+#include <sstream>
+#include <stdio.h>
 #include "Pacientes.h"
-
 
 using namespace std;
 
@@ -14,19 +18,19 @@ private:
 	bool completo;
 
 public:
-	cLaboratorio(string _IDlabo, string _nombre, int _comuna, cPaciente* _paciente1 = NULL, cPaciente* _paciente2 = NULL, bool _completo = false);
+	cLaboratorio(string _IDlabo, string _nombre, int _comuna);
 	~cLaboratorio();
-	RecibirMuestra(cPaciente* _paciente);
-	AnalisisMuestra(cPaciente* _paciente);
-	AvisarPacientes(cPaciente* _paciente);
+	void RecibirMuestra(cPaciente* _paciente);
+	void AnalisisMuestra(cPaciente* _paciente);
+	void AvisarPacientes(cPaciente* _paciente);
 
 	//setters de los atributos funcionales
-	setCompleto(bool _completo);
-	setPaciente1(cPaciente* _paciente);
-	setPaciente2(cPaciente* _paciente);
+	void setCompleto(bool _completo);
+	void setPaciente1(cPaciente* _paciente);
+	void setPaciente2(cPaciente* _paciente);
 	string getNombreLabo();
 
 	//funciones que usaremos para imprimir en pantalla los atributos
 	string to_stringLabo();
-	ImprimirEnPantalla();
+	void ImprimirEnPantalla();
 };

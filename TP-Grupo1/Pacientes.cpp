@@ -1,7 +1,5 @@
 #include "pacientes.h"
-#include <iostream>
-#include <stdio.h>
-#include <string>
+
 
 using namespace std;
 /// <summary>
@@ -15,7 +13,7 @@ using namespace std;
 /// <param name="head_pain"></param>
 /// <param name="throat_pain"></param>
 /// <param name=""></param>
-cPaciente::cPaciente(string name, string surname, string phone,string DNI,bool fever, bool snot, bool contact, bool head_pain, bool throat_pain,resultado_testeo result = sinresultado) {
+cPaciente::cPaciente(string name, string surname, string phone,string DNI,bool fever, bool snot, bool contact, bool head_pain, bool throat_pain) {
 
     this->nombre = name;
     this->apellido = surname;
@@ -26,7 +24,7 @@ cPaciente::cPaciente(string name, string surname, string phone,string DNI,bool f
     this->cctoestrecho = contact;
     this->dolor_de_cabeza = head_pain;
     this->dolor_de_garganta = throat_pain;
-    this->resultado_testeo = result;
+    this-> resul = sinresultado;
 
 
 }
@@ -41,63 +39,64 @@ cPaciente::~cPaciente() {}
 /// Recibe el resultado del test y lo asigna al atributo resultado_testeo
 /// </summary>
 /// <param name=""></param>
-cPaciente:: setresultado_testo(resul) {
-    this->resultado_testeo = resul;
+ void cPaciente::setresultado_testeo(resultado_testeo res) {
+    this->resul = res;
+    return;
 }
 
 /// <summary>
 /// Devuelve el DNI del paciente
 /// </summary>
-cPaciente:: getdni() {
+string cPaciente:: getdni() {
     return this -> dni;
 };
 
 /// <summary>
 /// Devuelve el telefono del paciente
 /// </summary>
-cPaciente:: gettelefono() {
+string cPaciente:: gettelefono() {
     return this->telefono;
 };
 
 /// <summary>
 /// Devuelve el nombre del paciente
 /// </summary>
-cPaciente:: getnombre() {
+string cPaciente:: getnombre() {
     return this->nombre;
 }
 
 /// <summary>
 /// Devuelve el apellido del paciente
 /// </summary>
-cPaciente:: getapellido() { 
+string cPaciente:: getapellido() { 
     return this->apellido;
 }
 
 /// <summary>
 /// Devuelve true si el paciente tiene fiebre
 /// </summary>
-cPaciente:: getfiebre() { 
+bool cPaciente:: getfiebre() { 
     return this->fiebre; 
 }
 
 /// <summary>
 /// Devuelve true si el paciente tiene tos
 /// </summary>
-cPaciente:: gettos() { 
+bool cPaciente:: gettos() { 
     return tos;
 }
 
 /// <summary>
 /// Devuelve true si el paciente tiene mocos
 /// </summary>
-cPaciente:: getmocos() { 
+bool cPaciente:: getmocos() { 
     return mocos; 
 }
 
 /// <summary>
 /// Devuelve true si el paciente es contacto estrecho
 /// </summary>
-cPaciente:: getcctoestrecho() { 
+bool cPaciente:: getcctoestrecho() { 
     return cctoestrecho; 
 
 
@@ -106,13 +105,18 @@ cPaciente:: getcctoestrecho() {
 /// <summary>
 /// Devuelve true si el paciente tiene dolor de cabeza
 /// </summary>
-cPaciente:: getdolor_de_cabeza() { 
+bool cPaciente:: getdolor_de_cabeza() { 
     return dolor_de_cabeza; 
 }
 
 /// <summary>
 /// Devuelve true si el paciente tiene dolor de garganta
 /// </summary>
-cPaciente:: getdolor_de_garganta() { 
+bool cPaciente:: getdolor_de_garganta() { 
     return dolor_de_garganta; 
+}
+
+resultado_testeo cPaciente::getResultadoTesteo()
+{
+    return this->resul;
 }

@@ -1,11 +1,12 @@
 #pragma once
 #include<iostream>
+#include <stdlib.h>
 #include <string>
+#include <sstream>
 #include <stdio.h>
-#include "CentroDeTesteo.h"
-#include "Laboratorios.h"
 
 
+enum resultado_testeo { negativo = 0, positivo, sinresultado };
 using namespace std;
 
 class cPaciente
@@ -23,11 +24,11 @@ private:
     bool cctoestrecho;
     bool dolor_de_cabeza;
     bool dolor_de_garganta;
-    enum resultado_testeo { negativo = 0, positivo, sinresultado };
+    resultado_testeo resul;
 
 
 public:
-    cPaciente(string name, string surname,string phone,string DNI, bool fever, bool snot, bool contact, bool head_pain, bool throat_pain, resultado_testeo result=sinresultado);
+    cPaciente(string name, string surname, string phone, string DNI, bool fever, bool snot, bool contact, bool head_pain, bool throat_pain);
 
     ~cPaciente();
 
@@ -37,8 +38,10 @@ public:
     string getapellido();
     bool getfiebre();
     bool gettos();
-    bool getmocos(); 
-    bool getcctoestrecho(); 
-    bool getdolor_de_cabeza(); 
+    bool getmocos();
+    bool getcctoestrecho();
+    bool getdolor_de_cabeza();
     bool getdolor_de_garganta();
-    void setresultado_testeo(enum res);
+    resultado_testeo getResultadoTesteo();
+    void setresultado_testeo(resultado_testeo res);
+};
