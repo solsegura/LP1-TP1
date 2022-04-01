@@ -33,7 +33,7 @@ public:
 
     ~cPaciente();
 
-    string getdni();
+
     string gettelefono();
     string getnombre();
     string getapellido();
@@ -45,4 +45,8 @@ public:
     bool getdolor_de_garganta();
     resultado_testeo getResultadoTesteo();
     void setresultado_testeo(resultado_testeo res);
+
+    //funciones que usaremos para imprimir en pantalla los atributos
+    string to_stringPaciente();
+    void ImprimirEnPantalla();
 };

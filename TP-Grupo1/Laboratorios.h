@@ -21,8 +21,8 @@ public:
 	cLaboratorio(string _IDlabo, string _nombre, int _comuna);
 	~cLaboratorio();
 	void RecibirMuestra(cPaciente* _paciente);
-	void AnalisisMuestra(cPaciente* _paciente);
-	void AvisarPacientes(cPaciente* _paciente);
+	void AnalisisMuestra();
+	void AvisarPacientes();
 
 	//setters de los atributos funcionales
 	void setCompleto(bool _completo);

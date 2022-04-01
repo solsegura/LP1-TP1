@@ -24,7 +24,7 @@ cPaciente::cPaciente(string name, string surname, string phone,string DNI,bool f
     this->cctoestrecho = contact;
     this->dolor_de_cabeza = head_pain;
     this->dolor_de_garganta = throat_pain;
-    this-> resul = sinresultado;
+    this-> resul = resultado_testeo::sinresultado;
 
 
 }
@@ -44,12 +44,7 @@ cPaciente::~cPaciente() {}
     return;
 }
 
-/// <summary>
-/// Devuelve el DNI del paciente
-/// </summary>
-string cPaciente:: getdni() {
-    return this -> dni;
-};
+
 
 /// <summary>
 /// Devuelve el telefono del paciente
@@ -116,7 +111,37 @@ bool cPaciente:: getdolor_de_garganta() {
     return dolor_de_garganta; 
 }
 
+
+/// <summary>
+/// Devuelve el resultado de testeo del paciente
+/// </summary>
+/// <returns></returns>
 resultado_testeo cPaciente::getResultadoTesteo()
 {
     return this->resul;
+}
+
+/// <summary>
+/// Concatena en un stringstream los atributos del paciente que vamos a imprimir
+/// </summary>
+/// <returns></returns>
+string cPaciente::to_stringPaciente()
+{
+    stringstream ss;
+    ss << "Nombre: " << this->nombre << endl;
+    ss << "Apellido:  " << this->apellido << endl;
+    ss << "DNI: " << this->dni << endl;
+    ss << "Resultado: " << this->resul << endl;
+    ss << endl;
+
+    return  ss.str();
+}
+
+
+/// <summary>
+/// Imprime en pantalla los atributos del paciente
+/// </summary>
+void cPaciente::ImprimirEnPantalla() {
+    string info = to_stringPaciente();
+    cout << info << endl;
 }

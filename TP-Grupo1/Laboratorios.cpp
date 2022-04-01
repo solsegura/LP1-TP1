@@ -54,28 +54,52 @@ void cLaboratorio::RecibirMuestra(cPaciente* _paciente) {
 /// recibe paciente y cuanta cuantos sintomas tiene para darle un resultado del test
 /// </summary>
 /// <param name="_paciente"></param>
-void cLaboratorio::AnalisisMuestra(cPaciente* _paciente)    //esta hacerla con paciente1 y paciente2 PUNTEROS
+void cLaboratorio::AnalisisMuestra()    //esta hacerla con paciente1 y paciente2 PUNTEROS
 {
+	if (paciente1 != NULL) {
+		int sintomas = 0;
+		if (paciente1->getfiebre() == true)
+			sintomas++;
+		if (paciente1->gettos() == true)
+			sintomas++;
+		if (paciente1->getmocos() == true)
+			sintomas++;
+		if (paciente1->getcctoestrecho() == true)
+			sintomas++;
+		if (paciente1->getdolor_de_cabeza() == true)
+			sintomas++;
+		if (paciente1->getdolor_de_garganta() == true)
+			sintomas++;
+		//enum resultado covid 0 negativo 1 positivo 2 sin resultado
+		if (sintomas >= 2)
+			paciente1->setresultado_testeo(positivo);
 
-	int sintomas = 0;
-	if (_paciente->getfiebre() == true)
-		sintomas++;
-	if (_paciente->gettos() == true)
-		sintomas++;
-	if (_paciente->getmocos() == true)
-		sintomas++;
-	if (_paciente->getcctoestrecho() == true)
-		sintomas++;
-	if (_paciente->getdolor_de_cabeza() == true)
-		sintomas++;
-	if (_paciente->getdolor_de_garganta() == true)
-		sintomas++;
-	//enum resultado covid 0 negativo 1 positivo 2 sin resultado
-	if (sintomas >= 2)
-		_paciente->setresultado_testeo(positivo);
+		if (sintomas < 2)
+			paciente1->setresultado_testeo(negativo);
+	}
+	
+	if (paciente2 != NULL) {
+		int sintomas = 0;
+		if (paciente2->getfiebre() == true)
+			sintomas++;
+		if (paciente2->gettos() == true)
+			sintomas++;
+		if (paciente2->getmocos() == true)
+			sintomas++;
+		if (paciente2->getcctoestrecho() == true)
+			sintomas++;
+		if (paciente2->getdolor_de_cabeza() == true)
+			sintomas++;
+		if (paciente2->getdolor_de_garganta() == true)
+			sintomas++;
+		//enum resultado covid 0 negativo 1 positivo 2 sin resultado
+		if (sintomas >= 2)
+			paciente2->setresultado_testeo(positivo);
 
-	if (sintomas < 2)
-		_paciente->setresultado_testeo(negativo);
+		if (sintomas < 2)
+			paciente2->setresultado_testeo(negativo);
+	}
+
 }
 
 
@@ -85,17 +109,33 @@ void cLaboratorio::AnalisisMuestra(cPaciente* _paciente)    //esta hacerla con p
 /// Recibe un paciente y avisa a su telefono el resultado del test
 /// </summary>
 /// <param name="_paciente"></param>
-void cLaboratorio::AvisarPacientes(cPaciente* _paciente) { //asumo que el numero de telefono es valido o un espacio en caso de no tener telefono
-	
-	string tel=_paciente->gettelefono();
-	if (tel == " ") {
-		cout << "No se encontro numero de telefono" << endl;
-	}
-	else
-		cout << "El mensaje fue enviado correctamente a " << tel << endl;  //HACERLO CON PUNTEROS
-	paciente1 = NULL; //libero la muestra
-	paciente2 = NULL;
+void cLaboratorio::AvisarPacientes() { //asumo que el numero de telefono es valido o un espacio en caso de no tener telefono
+	if (paciente1 != NULL) {
 
+		string tel = paciente1->gettelefono();
+		string nom = paciente1->getnombre();
+		string ape = paciente1->getapellido();
+		if (tel == " ") {
+			cout << "No se encontro numero de telefono" << endl << endl;
+		}
+		else
+			cout << "El mensaje fue enviado correctamente a " <<nom <<" "<< ape<<", al telefono: "<< tel << endl << endl;  
+		paciente1 = NULL; //libero la muestra
+		
+	}
+	if (paciente2 != NULL) {
+
+		string tel = paciente2->gettelefono();
+		string nom = paciente2->getnombre();
+		string ape = paciente2->getapellido();
+		if (tel == " ") {
+			cout << "No se encontro numero de telefono" << endl << endl;
+		}
+		else
+			cout << "El mensaje fue enviado correctamente a " << nom << " " << ape << ", al telefono: " << tel << endl << endl;
+		paciente2 = NULL; //libero la muestra
+
+	}
 }
 
 
@@ -135,3 +175,44 @@ void cLaboratorio::ImprimirEnPantalla() {
 string cLaboratorio::getNombreLabo() {
 	return this->nombre;
 }
+/*
+void cLaboratorio::AvisarPacientes(cPaciente* _paciente) { //asumo que el numero de telefono es valido o un espacio en caso de no tener telefono
+
+
+	string tel=_paciente->gettelefono();
+	if (tel == " ") {
+		cout << "No se encontro numero de telefono" << endl;
+	}
+	else
+		cout << "El mensaje fue enviado correctamente a " << tel << endl;  //HACERLO CON PUNTEROS
+	paciente1 = NULL; //libero la muestra
+	paciente2 = NULL;
+
+}
+
+
+void cLaboratorio::AnalisisMuestra(cPaciente* _paciente)    //esta hacerla con paciente1 y paciente2 PUNTEROS
+{
+
+	int sintomas = 0;
+	if (_paciente->getfiebre() == true)
+		sintomas++;
+	if (_paciente->gettos() == true)
+		sintomas++;
+	if (_paciente->getmocos() == true)
+		sintomas++;
+	if (_paciente->getcctoestrecho() == true)
+		sintomas++;
+	if (_paciente->getdolor_de_cabeza() == true)
+		sintomas++;
+	if (_paciente->getdolor_de_garganta() == true)
+		sintomas++;
+	//enum resultado covid 0 negativo 1 positivo 2 sin resultado
+	if (sintomas >= 2)
+		_paciente->setresultado_testeo(positivo);
+
+	if (sintomas < 2)
+		_paciente->setresultado_testeo(negativo);
+}
+
+*/

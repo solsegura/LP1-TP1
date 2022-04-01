@@ -1,7 +1,6 @@
 #include "CentroDeTesteo.h"
 
 
-using namespace std;
 /// <summary>
 /// Constructor de la clase Centro de Testeo
 /// </summary>
@@ -56,11 +55,13 @@ void cCentroDeTesteo::AltaPaciente(cPaciente* _paciente) {
 		if (this->paciente1 == NULL) {
 			setPaciente1(_paciente);
 		}
-		else
+		else if (paciente1 != _paciente)
 			setPaciente2(_paciente);
+		else
+			cout << "El paciente ya esta ingresado" << endl << endl;
 	}
 	else {
-		cout << "Error: no hay espacio para mas pacientes" << endl;
+		cout << "Error: no hay espacio para mas pacientes" << endl << endl;
 	}
 	if (this->paciente1 != NULL && this->paciente2 != NULL) {
 		setCompleto(true);

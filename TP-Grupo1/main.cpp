@@ -50,15 +50,11 @@ void main() {
 	lista_centros[1]->MandarTesteos();
 	lista_centros[2]->MandarTesteos();
 
-	//lista_laboratorios[0]->AnalisisMuestra();   //esto es lo que creemos que esta bien
-	//lista_laboratorios[1]->AnalisisMuestra();
-	//lista_laboratorios[2]->AnalisisMuestra();
+	lista_laboratorios[0]->AnalisisMuestra();   //esto es lo que creemos que esta bien
+	lista_laboratorios[1]->AnalisisMuestra();
+	lista_laboratorios[2]->AnalisisMuestra();
 
-	lista_laboratorios[0]->AnalisisMuestra(lista_pacientes[0]);   //creeemos que esto esta MAL pero bueno, le mandamos las muestras y las analiza
-	lista_laboratorios[0]->AnalisisMuestra(lista_pacientes[3]);
-	lista_laboratorios[1]->AnalisisMuestra(lista_pacientes[1]);
-	lista_laboratorios[1]->AnalisisMuestra(lista_pacientes[2]);
-	lista_laboratorios[2]->AnalisisMuestra(lista_pacientes[4]);
+	
 
 	lista_centros[0]->ImprimirEnPantalla();
 	lista_centros[1]->ImprimirEnPantalla();
@@ -68,9 +64,27 @@ void main() {
 	lista_laboratorios[1]->ImprimirEnPantalla();
 	lista_laboratorios[2]->ImprimirEnPantalla();
 
-	//lista_laboratorios[0]->AvisarPacientes();
-	//lista_laboratorios[1]->AvisarPacientes();
-	//lista_laboratorios[2]->AvisarPacientes();
+	lista_laboratorios[0]->AvisarPacientes();
+	lista_laboratorios[1]->AvisarPacientes();
+	lista_laboratorios[2]->AvisarPacientes();
 
+	for (int i = 0; i < N_pacientes; i++) {
+		lista_pacientes[i]->ImprimirEnPantalla();
+	}
+	
+	for (int i = 0; i < N_centros;i++)
+		delete lista_centros[i];
+
+	delete []lista_centros;
+
+	for (int i = 0; i < N_laboratorios; i++)
+		delete lista_laboratorios[i];
+
+	delete []lista_laboratorios;
+
+	for (int i = 0; i < N_pacientes; i++)
+		delete lista_pacientes[i];
+
+	delete []lista_pacientes;
 
 }
