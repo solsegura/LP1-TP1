@@ -4,7 +4,6 @@
 #include <string>
 #include <sstream>
 #include <stdio.h>
-#include "Pacientes.h"
 #include "Laboratorios.h"
 
 using namespace std;

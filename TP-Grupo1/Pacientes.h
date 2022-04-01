@@ -6,7 +6,7 @@
 #include <stdio.h>
 
 
-enum resultado_testeo { negativo = 0, positivo, sinresultado };
+enum resultado_testeo { negativo , positivo, sinresultado };
 using namespace std;
 
 class cPaciente
@@ -28,7 +28,8 @@ private:
 
 
 public:
-    cPaciente(string name, string surname, string phone, string DNI, bool fever, bool snot, bool contact, bool head_pain, bool throat_pain);
+    cPaciente(string name, string surname, string phone, string DNI, bool fever, bool snot,
+    bool contact, bool head_pain, bool throat_pain);
 
     ~cPaciente();
 

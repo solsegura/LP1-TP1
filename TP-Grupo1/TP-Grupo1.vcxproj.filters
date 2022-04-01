@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TP-Grupo1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CentroDeTesteo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

@@ -143,7 +143,6 @@
     <ClCompile Include="Laboratorios.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pacientes.cpp" />
-    <ClCompile Include="TP-Grupo1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CentroDeTesteo.h" />

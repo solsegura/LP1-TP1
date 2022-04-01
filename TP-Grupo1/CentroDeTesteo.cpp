@@ -155,5 +155,6 @@ string cCentroDeTesteo::to_stringCentro() {
 	if (laboratorio != NULL) {
 		ss << "Laboratorio: " << laboratorio->getNombreLabo() << endl;
 	}
+	ss << endl;
 	return  ss.str();
 }

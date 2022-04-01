@@ -1,5 +1,5 @@
-#include "Pacientes.h"
-#include "Laboratorios.h"
+//#include "Pacientes.h"
+//#include "Laboratorios.h"
 #include "CentroDeTesteo.h"
 #define N_pacientes 5
 #define N_centros 3
@@ -28,8 +28,8 @@ void main() {
 	lista_laboratorios[2] = new cLaboratorio("4321", "Labo3", 6);
 
 	lista_centros[0] = new cCentroDeTesteo("c123", 12, "Centro1");
-	lista_centros[1] = new cCentroDeTesteo("c213", 6, "Centro1");
-	lista_centros[2] = new cCentroDeTesteo("c321", 14, "Centro1");
+	lista_centros[1] = new cCentroDeTesteo("c213", 6, "Centro2");
+	lista_centros[2] = new cCentroDeTesteo("c321", 14, "Centro3");
 
 
 	//asigno los pacientes a cada centro y los laboratorios a cada centro
