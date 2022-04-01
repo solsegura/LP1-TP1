@@ -127,11 +127,20 @@ resultado_testeo cPaciente::getResultadoTesteo()
 /// <returns></returns>
 string cPaciente::to_stringPaciente()
 {
+    string resultadito;
+    if (this->resul == negativo)
+        resultadito = "No detectable";
+    if (this->resul == positivo)
+        resultadito = "Detectable";
+    if (this->resul == sinresultado)
+        resultadito = "Sin resultado";
+
+
     stringstream ss;
     ss << "Nombre: " << this->nombre << endl;
     ss << "Apellido:  " << this->apellido << endl;
     ss << "DNI: " << this->dni << endl;
-    ss << "Resultado: " << this->resul << endl;
+    ss << "Resultado: " << resultadito << endl;
     ss << endl;
 
     return  ss.str();

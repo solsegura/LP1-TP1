@@ -54,14 +54,25 @@ void cCentroDeTesteo::AltaPaciente(cPaciente* _paciente) {
 	if (this->completo == false) {
 		if (this->paciente1 == NULL) {
 			setPaciente1(_paciente);
+			cout << "Se ingreso con exito al paciente: " << _paciente->getnombre() << endl;
+			system("pause");
+
 		}
-		else if (paciente1 != _paciente)
+		else if (paciente1 != _paciente){
 			setPaciente2(_paciente);
-		else
-			cout << "El paciente ya esta ingresado" << endl << endl;
+			cout << "Se ingreso con exito al paciente: " << _paciente->getnombre() << endl;
+			system("pause");
+		}
+		else {
+			cout << "El paciente " << _paciente->getnombre() << " ya esta ingresado en el centro de testeos " << this->nombre << endl << endl;
+			system("pause");
+
+		}
 	}
 	else {
 		cout << "Error: no hay espacio para mas pacientes" << endl << endl;
+		system("pause");
+
 	}
 	if (this->paciente1 != NULL && this->paciente2 != NULL) {
 		setCompleto(true);

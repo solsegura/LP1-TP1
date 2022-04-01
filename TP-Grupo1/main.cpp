@@ -34,7 +34,7 @@ void main() {
 
 	//asigno los pacientes a cada centro y los laboratorios a cada centro
 	lista_centros[0]->AltaPaciente(lista_pacientes[0]);  //en el centro1 van los pacientes Sol y Valentina 
-	lista_centros[0]->AltaPaciente(lista_pacientes[3]);
+	lista_centros[0]->AltaPaciente(lista_pacientes[0]);
 	lista_centros[0]->AsociarLaboratorio(lista_laboratorios[0]);  // lo asociamos al labo1
 
 	lista_centros[1]->AltaPaciente(lista_pacientes[1]);  //en el centro2 van Fiorella y Rosario
@@ -54,24 +54,37 @@ void main() {
 	lista_laboratorios[1]->AnalisisMuestra();
 	lista_laboratorios[2]->AnalisisMuestra();
 
-	
-
+	system("cls");
+	cout << "	CENTROS DE TESTEOS" << endl<<endl;
 	lista_centros[0]->ImprimirEnPantalla();
 	lista_centros[1]->ImprimirEnPantalla();
 	lista_centros[2]->ImprimirEnPantalla();
+
+	system("pause");
+	system("cls");
+	cout << "	LABORATORIOS" << endl<<endl;
 
 	lista_laboratorios[0]->ImprimirEnPantalla();
 	lista_laboratorios[1]->ImprimirEnPantalla();
 	lista_laboratorios[2]->ImprimirEnPantalla();
 
+
+	system("pause");
+	system("cls");
+	cout << "	ENVIO DE RESULTADOS" << endl<<endl;
 	lista_laboratorios[0]->AvisarPacientes();
 	lista_laboratorios[1]->AvisarPacientes();
 	lista_laboratorios[2]->AvisarPacientes();
 
+	system("pause");
+	system("cls");
+	cout << "	PACIENTES" << endl << endl;
 	for (int i = 0; i < N_pacientes; i++) {
 		lista_pacientes[i]->ImprimirEnPantalla();
 	}
-	
+
+	system("pause");
+
 	for (int i = 0; i < N_centros;i++)
 		delete lista_centros[i];
 
